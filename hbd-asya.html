@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebuah Pesan untuk Asya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+        .gradient-bg {
+            background: linear-gradient(-45deg, #fce4ec, #f8bbd0, #e91e63, #ad1457);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .heart {
+            position: absolute; width: 20px; height: 20px; background: white; opacity: 0.8;
+            clip-path: polygon(50% 100%, 0 45%, 0 0, 100% 0, 100% 45%);
+            animation: fall 10s linear infinite; transform: rotate(45deg);
+        }
+        @keyframes fall { to { transform: translateY(100vh) rotate(405deg); } }
+        .pulse-button { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+        .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid white; }
+        .gallery-item:hover { transform: scale(1.05) rotate(3deg); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .fade-in { animation: fadeIn 1.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="gradient-bg text-white">
+
+    <!-- Musik Mabruk Alfa Mabruk -->
+    <audio id="background-music" loop>
+        <source src="https://archive.org/download/selamatulangtahunselamatulangtahun/Mabruk%20Alfa%20Mabruk.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div id="hearts-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
+    <!-- Tombol Pembuka -->
+    <div id="start-screen" class="min-h-screen w-full flex flex-col items-center justify-center p-6 text-center">
+        <h1 class="font-pacifico text-4xl md:text-6xl text-pink-100 drop-shadow-lg mb-4">Hai Asya!</h1>
+        <p class="text-xl md:text-2xl text-white mb-8">Ada pesan spesial buat kamu...</p>
+        <button id="start-button" class="pulse-button bg-white text-pink-600 font-bold py-4 px-10 rounded-full shadow-lg text-lg transition-transform transform hover:scale-105">
+            Buka Sekarang 💌
+        </button>
+    </div>
+
+    <!-- Konten Utama (Awalnya tersembunyi) -->
+    <div id="main-content" class="hidden min-h-screen flex-col items-center justify-center p-6 z-10">
+        <div class="w-full max-w-4xl bg-white/20 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-12 text-center fade-in">
+            <h1 class="font-pacifico text-4xl md:text-6xl text-pink-100 drop-shadow-lg">Selamat Ulang Tahun!</h1>
+            <h2 class="text-2xl md:text-4xl font-bold mt-2 text-white drop-shadow-md">Asya Bawel Kesayanganku</h2>
+            <p class="mt-6 text-lg md:text-xl text-pink-50 max-w-2xl mx-auto">
+                Hai sayang, di hari yang spesial ini, aku mau bilang terima kasih udah jadi bagian terindah dalam hidupku. Semoga kamu selalu bahagia, sehat, dan semua impianmu terwujud. Aku sayang banget sama kamu, bawelku! ❤️
+jangan lupa salin link ini yah asya🥳( https://asya-punya-om.tiiny.site )
+            </p>
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold mb-6">Galeri Asya🥳</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- FOTO SUDAH TERPASANG -->
+                    <img src="https://drive.google.com/uc?id=1BBL0KF4DilneyS8gtcHyr3FOc9Y2WSIB" alt="Kenangan 1" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="https://drive.google.com/uc?id=1BFeVX_b83De5-JLkEJP2MEZfMtVy6ron" alt="Kenangan 2" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="https://drive.google.com/uc?id=1BHfroAXHYDxx6JeixHbQIyzLIU7UYjlL" alt="Kenangan 3" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="https://drive.google.com/uc?id=1BLqbgiBGhXj8LMXVMXBGVLYj9VrHVOc6" alt="Kenangan 4" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="https://drive.google.com/uc?id=1B1aqpXcxTIxxKtogsbWHEa2NyHV7Ep8A" alt="Kenangan 5" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg col-span-2 md:col-span-2">
+                    <img src="https://drive.google.com/uc?id=1B7viqxcdfbbSVmEoPGN-0aV0pe0EzoZ0" alt="Kenangan 6" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                    <img src="https://drive.google.com/uc?id=1B2Ta22cv9hMiEgSbmas2Kfjg6yWU2Ub9" alt="Kenangan 7" class="gallery-item w-full h-auto object-cover rounded-xl shadow-lg">
+                </div>
+            </div>
+            <div class="mt-12">
+                 <!-- JANGAN LUPA GANTI NAMA KAMU DI SINI -->
+                <p class="text-lg font-bold">With all my love, <br> [Om putra cabul🤤]</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const music = document.getElementById('background-music');
+            const startScreen = document.getElementById('start-screen');
+            const startButton = document.getElementById('start-button');
+            const mainContent = document.getElementById('main-content');
+            
+            startButton.addEventListener('click', () => {
+                music.play().catch(e => {
+                    console.error("Gagal memutar musik:", e);
+                });
+
+                startScreen.style.display = 'none';
+                mainContent.classList.remove('hidden');
+                mainContent.classList.add('flex');
+                
+                const heartsContainer = document.getElementById('hearts-container');
+                if (!heartsContainer.hasChildNodes()) {
+                    for (let i = 0; i < 20; i++) {
+                        const heart = document.createElement('div');
+                        heart.classList.add('heart');
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+                        heart.style.animationDelay = Math.random() * 5 + 's';
+                        heartsContainer.appendChild(heart);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
